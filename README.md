@@ -1,10 +1,8 @@
-# README Template
+# Shoe Store Inventory App
 
-Below is a template provided for use when building your README file for students.
-
-# Project Title
-
-Project description goes here.
+Shoe Store Inventory App that has basic screens Login, Onboarding, Shoe Listings, and Shoe Details
+Page. This app is part of Udacity Android Nanodegree course work to showcase core fundamentals such
+as: Layouts, Navigation, Fragments, MVVC, Live Data, etc.
 
 ## Getting Started
 
