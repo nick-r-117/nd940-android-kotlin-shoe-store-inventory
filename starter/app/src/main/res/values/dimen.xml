@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="login_title_margin_top">12dp</dimen>
+    <dimen name="login_title_margin_bottom">24dp</dimen>
+    <dimen name="login_title_text_size">34sp</dimen>
+    <dimen name="login_text_field_vertical_margin">8dp</dimen>
+    <dimen name="login_text_field_horizontal_margin">16dp</dimen>
+    <dimen name="login_text_field_min_height">48dp</dimen>
+    <dimen name="login_button_vertical_margin">8dp</dimen>
 </resources>

@@ -4,18 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.udacity.shoestore.screens.login.LoginFragment">
 
+    <data>
+        <variable
+            name="userLoginViewModel"
+            type="com.udacity.shoestore.models.UserLoginViewModel" />
+    </data>
+
     <LinearLayout
         android:id="@+id/login_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/login_title_margin_top"
-            android:layout_weight="1"
-            android:text="@string/login_title" />
+            android:layout_marginBottom="@dimen/login_title_margin_bottom"
+            android:text="@string/login_title"
+            android:textSize="@dimen/login_title_text_size" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/login_text_field_vertical_margin"
+            android:layout_marginHorizontal="@dimen/login_text_field_horizontal_margin">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/login_text_field_min_height"
+                android:hint="@string/login_email_hint_text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/login_text_field_vertical_margin"
+            android:layout_marginHorizontal="@dimen/login_text_field_horizontal_margin"
+            android:hint="@string/login_password_hint_text"
+            app:endIconMode="password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:minHeight="@dimen/login_text_field_min_height" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/login_button_vertical_margin"
+            android:text="@string/login_button" />
+
+        <Button
+            android:id="@+id/create_account_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/login_button_vertical_margin"
+            android:text="@string/create_account_button" />
     </LinearLayout>
 </layout>
