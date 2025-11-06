@@ -11,4 +11,10 @@
     <string name="welcome_body">Welcome to the Shoe Story Inventory App. We\'re glad you\'re here. Let\'s get started by getting you familiar with this app. Press <b>\'Next\'</b> when ready. </string>
     <string name="welcome_img_content_descrption">Welcome Background Image</string>
     <string name="welcome_next_button">Next</string>
+    <string name="instructions_title">Shoe Store Onboarding</string>
+    <string name="instructions_sub_title_desc">Description</string>
+    <string name="instructions_sub_title_instr">Instructions</string>
+    <string name="instructions_body_description">The Shoe Store Inventory is an app that allows you to create an account or login to view a list of inventory items, shoes, that you get to add. You can also logout and login anytime or create another account. </string>
+    <string name="instructions_body_instructions">Let\'s get started! You are already logged in. Once you press <b>\'Take me to my shoes!\'</b>, you will be taken to your last saved inventory of shoes where you can view details or add more using the add inventory button.</string>
+    <string name="instructions_next_button">Take me to my shoes!</string>
 </resources>

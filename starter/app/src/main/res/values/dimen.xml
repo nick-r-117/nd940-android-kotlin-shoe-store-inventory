@@ -8,9 +8,11 @@
     <dimen name="login_text_field_min_height">48dp</dimen>
     <dimen name="login_button_vertical_margin">8dp</dimen>
     <!-- Onboarding Strings   -->
-    <dimen name="welcome_title_text_size">40sp</dimen>
-    <dimen name="welcome_body_text_size">20sp</dimen>
-    <dimen name="welcome_screen_horizontal_margin">16dp</dimen>
-    <dimen name="welcome_screen_vertical_margin">16dp</dimen>
+    <dimen name="onboarding">40sp</dimen>
+    <dimen name="onboarding_body_text_size">20sp</dimen>
+    <dimen name="onboarding_screen_horizontal_margin">16dp</dimen>
+    <dimen name="onboarding_screen_vertical_margin">16dp</dimen>
     <dimen name="welcome_img_size">340dp</dimen>
+    <dimen name="instructions_sub_title_text_size">32sp</dimen>
+
 </resources>
