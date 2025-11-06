@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Login Strings    -->
     <dimen name="login_title_margin_bottom">24dp</dimen>
     <dimen name="login_title_text_size">34sp</dimen>
     <dimen name="login_text_field_vertical_margin">8dp</dimen>
     <dimen name="login_text_field_horizontal_margin">16dp</dimen>
     <dimen name="login_text_field_min_height">48dp</dimen>
     <dimen name="login_button_vertical_margin">8dp</dimen>
+    <!-- Onboarding Strings   -->
+    <dimen name="welcome_title_text_size">40sp</dimen>
+    <dimen name="welcome_body_text_size">20sp</dimen>
+    <dimen name="welcome_screen_horizontal_margin">16dp</dimen>
+    <dimen name="welcome_screen_vertical_margin">16dp</dimen>
+    <dimen name="welcome_img_size">340dp</dimen>
 </resources>

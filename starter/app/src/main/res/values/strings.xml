@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name">ShoeStore</string>
+    <!-- Login Strings    -->
     <string name="login_title">Shoe Store</string>
     <string name="login_email_hint_text">Email</string>
     <string name="login_password_hint_text">Password</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">Create New Account</string>
+    <!-- Onboarding Strings   -->
+    <string name="welcome_title">Welcome!</string>
+    <string name="welcome_body">Welcome to the Shoe Story Inventory App. We\'re glad you\'re here. Let\'s get started by getting you familiar with this app. Press <b>\'Next\'</b> when ready. </string>
+    <string name="welcome_img_content_descrption">Welcome Background Image</string>
+    <string name="welcome_next_button">Next</string>
 </resources>
