@@ -14,6 +14,11 @@ class UserLoginViewModel : ViewModel() {
     val loginSuccess: LiveData<Boolean>
         get() = _loginSuccess
 
+    private val _isLoggedIn = MutableLiveData<Boolean>()
+    val isLoggedIn: LiveData<Boolean>
+        get() = _isLoggedIn
+
+
     init {
         _loginSuccess.value = false
     }
@@ -24,6 +29,7 @@ class UserLoginViewModel : ViewModel() {
             _password = password
 
             _loginSuccess.value = true
+            _isLoggedIn.value = true
 
             // TODO: Write to DB
         }
@@ -34,6 +40,7 @@ class UserLoginViewModel : ViewModel() {
             _email = email
             _password = password
             _loginSuccess.value = true
+            _isLoggedIn.value = true
         }
     }
 
@@ -49,5 +56,9 @@ class UserLoginViewModel : ViewModel() {
     private fun verifyCredentials(email: String?, password: String?): Boolean {
         return validate(email, password)
         // TODO: Read from DB
+    }
+
+    fun onLoggedInComplete() {
+        _loginSuccess.value = false
     }
 }

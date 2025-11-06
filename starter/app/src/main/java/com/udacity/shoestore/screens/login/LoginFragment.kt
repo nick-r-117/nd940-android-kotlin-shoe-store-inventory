@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.LoginFragmentBinding
 import com.udacity.shoestore.models.UserLoginViewModel
@@ -32,6 +34,7 @@ class LoginFragment : Fragment() {
         userLoginViewModel.loginSuccess.observe(this.viewLifecycleOwner, { loginSuccess ->
             if (loginSuccess) {
                 Timber.d("Login successful")
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
             }
         })
 

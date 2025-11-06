@@ -27,10 +27,11 @@
             android:layout_height="@dimen/welcome_img_size"
             android:layout_marginVertical="@dimen/welcome_screen_vertical_margin"
             android:contentDescription="@string/welcome_img_content_descrption"
+            tools:src="@tools:sample/backgrounds/scenic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/onboarding_title" />
+            app:layout_constraintTop_toBottomOf="@+id/onboarding_title"/>
 
         <TextView
             android:id="@+id/textView3"
@@ -49,6 +50,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/welcome_screen_vertical_margin"
+            android:layout_marginHorizontal="@dimen/welcome_screen_horizontal_margin"
             android:text="@string/welcome_next_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
