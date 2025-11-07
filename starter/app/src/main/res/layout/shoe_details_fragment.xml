@@ -155,6 +155,7 @@
             android:layout_marginBottom="@dimen/shoe_details_screen_bottom_margin"
             android:layout_marginHorizontal="@dimen/shoe_details_screen_horizontal_margin"
             android:text="@string/shoe_secondary_button_label"
+            android:onClick="@{() -> shoeViewModel.cancelShoe()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/save_button"
             app:layout_constraintHorizontal_bias="0.5"

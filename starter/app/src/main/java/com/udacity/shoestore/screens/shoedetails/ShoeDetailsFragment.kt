@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.ShoeDetailsFragmentBinding
 import com.udacity.shoestore.models.ShoeInventoryViewModel
+import timber.log.Timber
 
 class ShoeDetailsFragment : Fragment() {
 
@@ -26,14 +28,23 @@ class ShoeDetailsFragment : Fragment() {
             container,
             false
         )
+        binding.lifecycleOwner = this
+        binding.shoeViewModel = shoeViewModel
 
         shoeViewModel.shouldClearTextInputFields.observe(this.viewLifecycleOwner, { shouldClear ->
+            Timber.d("shouldClear: $shouldClear")
             if (shouldClear) {
                 binding.shoeNameFieldEditText.text?.clear()
                 binding.shoeCompanyFieldEditText.text?.clear()
                 binding.shoeSizeFieldEditText.text?.clear()
                 binding.shoeDescriptionFieldEditText.text?.clear()
                 shoeViewModel.onTextInputFieldsCleared()
+            }
+        })
+
+        shoeViewModel.onSaveSuccess.observe(this.viewLifecycleOwner, { success ->
+            if (success) {
+                findNavController().navigate(ShoeDetailsFragmentDirections.actionShoeDetailsFragmentToShoeInventoryFragment())
             }
         })
 

@@ -15,6 +15,10 @@ class ShoeInventoryViewModel : ViewModel() {
     val shouldClearTextInputFields: LiveData<Boolean>
         get() = _shouldClearTextInputFields
 
+    private val _onSaveSuccess = MutableLiveData<Boolean>()
+    val onSaveSuccess: LiveData<Boolean>
+        get() = _onSaveSuccess
+
     private val _shoes = MutableLiveData<List<Shoe>>()
     val shoes: LiveData<List<Shoe>>
         get() = _shoes
@@ -31,6 +35,7 @@ class ShoeInventoryViewModel : ViewModel() {
             shoeDescription.value.toString())
 
         _shoes.value = _shoes.value?.plus(shoe)
+        _onSaveSuccess.value = true
     }
 
     fun cancelShoe() {
