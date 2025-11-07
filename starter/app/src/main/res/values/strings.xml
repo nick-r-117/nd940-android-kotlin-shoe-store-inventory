@@ -20,6 +20,17 @@
     <!--  Shoe Inventory Strings  -->
     <string name="shoe_inventory_title">Shoe Inventory</string>
     <string name="shoe_inventory_null_state_text">Added shoes will be listed here</string>
-    <string name="shoe_inventory_floating_action_button_text">Add Inventory</string>"
+    <string name="shoe_inventory_floating_action_button_text">Add Inventory</string>
+    <!--  Shoe Details Strings  -->
+    <string name="shoe_name_field_label">Shoe Name</string>
+    <string name="shoe_company_field_label">Shoe Company</string>
+    <string name="shoe_size_field_label">Shoe Size</string>
+    <string name="shoe_description_field_label">Shoe Description</string>
+    <string name="shoe_primary_button_label">Save</string>
+    <string name="shoe_secondary_button_label">Cancel</string>
+    <string name="shoe_name_edit_text_hint">Shoe Name</string>
+    <string name="shoe_company_edit_text_hint">Shoe Company</string>
+    <string name="shoe_size_edit_text_hint">Shoe Size</string>
+    <string name="shoe_description_edit_text_hint">Shoe Description</string>
 
 </resources>

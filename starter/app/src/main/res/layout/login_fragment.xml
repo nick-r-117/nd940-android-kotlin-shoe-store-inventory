@@ -35,7 +35,7 @@
                 android:id="@+id/email_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="@dimen/login_text_field_min_height"
+                android:minHeight="@dimen/text_field_min_height"
                 android:hint="@string/login_email_hint_text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:minHeight="@dimen/login_text_field_min_height" />
+                android:minHeight="@dimen/text_field_min_height" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

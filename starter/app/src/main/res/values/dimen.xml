@@ -4,7 +4,7 @@
     <dimen name="login_title_margin_bottom">24dp</dimen>
     <dimen name="login_text_field_vertical_margin">8dp</dimen>
     <dimen name="login_text_field_horizontal_margin">16dp</dimen>
-    <dimen name="login_text_field_min_height">48dp</dimen>
+    <dimen name="text_field_min_height">48dp</dimen>
     <dimen name="login_button_vertical_margin">8dp</dimen>
     <!-- Onboarding Strings   -->
     <dimen name="title_text_size">40sp</dimen>
@@ -19,5 +19,10 @@
     <dimen name="shoe_inventory_screen_horizontal_margin">16dp</dimen>
     <dimen name="shoe_inventory_screen_vertical_margin">16dp</dimen>
     <dimen name="shoe_inventory_floating_action_button_margin">16dp</dimen>
+    <!--  Shoe Details Strings  -->
+    <dimen name="shoe_details_label_text_size">20sp</dimen>
+    <dimen name="shoe_details_screen_top_margin">16dp</dimen>
+    <dimen name="shoe_details_screen_bottom_margin">16dp</dimen>
+    <dimen name="shoe_details_screen_horizontal_margin">16dp</dimen>
 
 </resources>
