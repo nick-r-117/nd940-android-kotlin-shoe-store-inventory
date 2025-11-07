@@ -2,17 +2,22 @@
 <resources>
     <!-- Login Strings    -->
     <dimen name="login_title_margin_bottom">24dp</dimen>
-    <dimen name="login_title_text_size">34sp</dimen>
     <dimen name="login_text_field_vertical_margin">8dp</dimen>
     <dimen name="login_text_field_horizontal_margin">16dp</dimen>
     <dimen name="login_text_field_min_height">48dp</dimen>
     <dimen name="login_button_vertical_margin">8dp</dimen>
     <!-- Onboarding Strings   -->
-    <dimen name="onboarding">40sp</dimen>
+    <dimen name="title_text_size">40sp</dimen>
     <dimen name="onboarding_body_text_size">20sp</dimen>
     <dimen name="onboarding_screen_horizontal_margin">16dp</dimen>
     <dimen name="onboarding_screen_vertical_margin">16dp</dimen>
     <dimen name="welcome_img_size">340dp</dimen>
     <dimen name="instructions_sub_title_text_size">32sp</dimen>
+    <!--  Shoe Inventory Strings  -->
+    <dimen name="shoe_inventory_body_text_size">20sp</dimen>
+    <dimen name="shoe_inventory_title_top_margin">16dp</dimen>
+    <dimen name="shoe_inventory_screen_horizontal_margin">16dp</dimen>
+    <dimen name="shoe_inventory_screen_vertical_margin">16dp</dimen>
+    <dimen name="shoe_inventory_floating_action_button_margin">16dp</dimen>
 
 </resources>

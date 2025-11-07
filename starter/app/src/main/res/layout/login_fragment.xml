@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/login_title_margin_bottom"
             android:text="@string/login_title"
-            android:textSize="@dimen/login_title_text_size" />
+            android:textSize="@dimen/title_text_size" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"

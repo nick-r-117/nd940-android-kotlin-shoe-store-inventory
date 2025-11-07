@@ -16,7 +16,7 @@
             android:layout_marginHorizontal="@dimen/onboarding_screen_horizontal_margin"
             android:layout_marginVertical="@dimen/onboarding_screen_vertical_margin"
             android:text="@string/welcome_title"
-            android:textSize="@dimen/onboarding"
+            android:textSize="@dimen/title_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
