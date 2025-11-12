@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.ShoeDetailsFragmentBinding
 import com.udacity.shoestore.models.ShoeInventoryViewModel
-import timber.log.Timber
 
 class ShoeDetailsFragment : Fragment() {
 
