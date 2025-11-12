@@ -61,6 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/login_button_vertical_margin"
+            android:onClick="@{() -> userLoginViewModel.login(emailEditText.getText().toString(), passwordEditText.getText().toString())}"
             android:text="@string/login_button" />
 
         <Button
@@ -68,6 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/login_button_vertical_margin"
+            android:onClick="@{() -> userLoginViewModel.createAccount(emailEditText.getText().toString(), passwordEditText.getText().toString())}"
             android:text="@string/create_account_button" />
     </LinearLayout>
 </layout>

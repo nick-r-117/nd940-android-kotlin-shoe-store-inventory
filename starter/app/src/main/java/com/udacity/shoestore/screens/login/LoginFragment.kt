@@ -1,9 +1,11 @@
 package com.udacity.shoestore.screens.login
 
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.edit
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -11,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.LoginFragmentBinding
+import com.udacity.shoestore.models.NuxConstants
 import com.udacity.shoestore.models.UserLoginViewModel
 import timber.log.Timber
 
@@ -31,33 +34,34 @@ class LoginFragment : Fragment() {
         )
 
         userLoginViewModel = ViewModelProvider(this).get(UserLoginViewModel::class.java)
-        userLoginViewModel.loginSuccess.observe(this.viewLifecycleOwner, { loginSuccess ->
-            if (loginSuccess) {
-                Timber.d("Login successful")
-                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
-            }
-        })
-
         binding.userLoginViewModel = userLoginViewModel
         binding.lifecycleOwner = this.viewLifecycleOwner
 
-        binding.loginButton.setOnClickListener { view: View ->
-            // Read email & password fields
-            val email = binding.emailEditText.text?.toString()
-            val password = binding.passwordEditText.text?.toString()
-
-            // TODO: Error handing -> Store user credentials -> Navigate to onboarding screen
-            userLoginViewModel.login(email, password)
-        }
-        binding.createAccountButton.setOnClickListener { view: View ->
-            // Read email & password fields
-            val email = binding.emailEditText.text?.toString()
-            val password = binding.passwordEditText.text?.toString()
-
-            // TODO: Error handing -> Store user credentials -> Navigate to onboarding screen
-            userLoginViewModel.createAccount(email, password)
-        }
+        userLoginViewModel.loginSuccess.observe(this.viewLifecycleOwner, { loginSuccess ->
+            if (loginSuccess) {
+                onLoginSuccess()
+            }
+        })
+        userLoginViewModel.accountCreatedSuccess.observe(this.viewLifecycleOwner, { accountCreatedSuccess ->
+            if (accountCreatedSuccess) {
+                val prefs = requireActivity().getSharedPreferences(NuxConstants.SHOE_STORE_NUX_PREFS, MODE_PRIVATE)
+                prefs.edit { putBoolean(NuxConstants.HAS_USER_ONBOARDED, false) }
+                onLoginSuccess()
+            }
+        })
 
         return binding.root
+    }
+
+    fun onLoginSuccess() {
+        val prefs = requireActivity().getSharedPreferences(NuxConstants.SHOE_STORE_NUX_PREFS, MODE_PRIVATE)
+        val hasUserOnboarded = prefs.getBoolean(NuxConstants.HAS_USER_ONBOARDED, false)
+        if (hasUserOnboarded) {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToShoeInventoryFragment())
+        } else {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
+        }
+        userLoginViewModel.onLoggedInComplete()
+        Timber.d("Login successful")
     }
 }

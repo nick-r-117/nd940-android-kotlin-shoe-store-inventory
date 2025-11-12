@@ -14,13 +14,14 @@ class UserLoginViewModel : ViewModel() {
     val loginSuccess: LiveData<Boolean>
         get() = _loginSuccess
 
-    private val _isLoggedIn = MutableLiveData<Boolean>()
-    val isLoggedIn: LiveData<Boolean>
-        get() = _isLoggedIn
+    private val _accountCreatedSuccess = MutableLiveData<Boolean>()
+    val accountCreatedSuccess: LiveData<Boolean>
+        get() = _accountCreatedSuccess
 
 
     init {
         _loginSuccess.value = false
+        _accountCreatedSuccess.value = false
     }
 
     fun createAccount(email: String?, password: String?) {
@@ -28,8 +29,7 @@ class UserLoginViewModel : ViewModel() {
             _email = email
             _password = password
 
-            _loginSuccess.value = true
-            _isLoggedIn.value = true
+            _accountCreatedSuccess.value = true
 
             // TODO: Write to DB
         }
@@ -40,7 +40,6 @@ class UserLoginViewModel : ViewModel() {
             _email = email
             _password = password
             _loginSuccess.value = true
-            _isLoggedIn.value = true
         }
     }
 
@@ -60,5 +59,6 @@ class UserLoginViewModel : ViewModel() {
 
     fun onLoggedInComplete() {
         _loginSuccess.value = false
+        _accountCreatedSuccess.value = false
     }
 }

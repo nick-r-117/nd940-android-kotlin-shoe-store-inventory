@@ -15,6 +15,11 @@
             app:destination="@id/welcomeFragment"
             app:popUpTo="@id/navigation"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_shoeInventoryFragment"
+            app:destination="@id/shoeInventoryFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
