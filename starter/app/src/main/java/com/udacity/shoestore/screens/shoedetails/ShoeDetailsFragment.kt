@@ -15,38 +15,38 @@ import com.udacity.shoestore.models.ShoeInventoryViewModel
 class ShoeDetailsFragment : Fragment() {
 
     private val shoeViewModel: ShoeInventoryViewModel by activityViewModels()
+    private var _binding: ShoeDetailsFragmentBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<ShoeDetailsFragmentBinding>(
+        _binding = DataBindingUtil.inflate(
             inflater,
             R.layout.shoe_details_fragment,
             container,
             false
         )
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = this.viewLifecycleOwner
         binding.shoeViewModel = shoeViewModel
 
-        shoeViewModel.onCancelSuccess.observe(this.viewLifecycleOwner, { onCancelSuccess ->
-            if (onCancelSuccess) {
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        shoeViewModel.onFinished.observe(this.viewLifecycleOwner, { onFinished ->
+            if (onFinished) {
                 binding.shoeNameFieldEditText.text?.clear()
                 binding.shoeCompanyFieldEditText.text?.clear()
                 binding.shoeSizeFieldEditText.text?.clear()
                 binding.shoeDescriptionFieldEditText.text?.clear()
-                shoeViewModel.onTextInputFieldsCleared()
-                findNavController().navigate(ShoeDetailsFragmentDirections.actionShoeDetailsFragmentToShoeInventoryFragment())
+                findNavController().popBackStack()
+                shoeViewModel.onFinished()
             }
         })
-
-        shoeViewModel.onSaveSuccess.observe(this.viewLifecycleOwner, { success ->
-            if (success) {
-                findNavController().navigate(ShoeDetailsFragmentDirections.actionShoeDetailsFragmentToShoeInventoryFragment())
-            }
-        })
-
-        return binding.root
     }
 }

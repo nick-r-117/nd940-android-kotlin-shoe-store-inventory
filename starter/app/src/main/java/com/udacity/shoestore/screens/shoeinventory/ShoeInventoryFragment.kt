@@ -25,22 +25,33 @@ import com.udacity.shoestore.models.Shoe
 class ShoeInventoryFragment : Fragment() {
 
     private val shoeViewModel: ShoeInventoryViewModel by activityViewModels()
+    private var _binding: ShoeInventoryFragmentBinding? = null
+    private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<ShoeInventoryFragmentBinding>(
+        _binding = DataBindingUtil.inflate(
             inflater,
             R.layout.shoe_inventory_fragment,
             container,
             false
         )
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = this.viewLifecycleOwner
+        return binding.root
+    }
 
-        binding.floatingActionButton.setOnClickListener {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setupMenu()
+
+        binding.floatingActionButton.setOnClickListener { clickedView ->
             findNavController().navigate(ShoeInventoryFragmentDirections.actionShoeInventoryFragmentToShoeDetailsFragment())
+
         }
 
         shoeViewModel.shoes.observe(this.viewLifecycleOwner, { shoes ->
@@ -49,20 +60,15 @@ class ShoeInventoryFragment : Fragment() {
                 layoutParams.gravity = Gravity.CENTER
                 binding.nullStateText.visibility = View.VISIBLE
             } else {
-                val layoutParams = binding.shoeList.layoutParams as FrameLayout.LayoutParams
                 layoutParams.gravity = Gravity.START
                 binding.nullStateText.visibility = View.GONE
                 updateShoeInventory(binding.shoeList, shoes)
             }
             binding.shoeList.layoutParams = layoutParams
         })
-
-        return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    private fun setupMenu() {
         val menuHost = requireActivity()
         menuHost.addMenuProvider( object : MenuProvider {
             override fun onCreateMenu(
@@ -87,34 +93,38 @@ class ShoeInventoryFragment : Fragment() {
     private fun updateShoeInventory(shoeContainer: ViewGroup, shoes: List<Shoe>) {
         val resources = shoeContainer.resources
 
-        shoeContainer.removeAllViews()
-        for (shoe in shoes) {
-            val shoeInfoText =
-                resources.getString(
-                    R.string.shoe_inventory_item,
-                    shoe.name,
-                    shoe.size.toString(),
-                    shoe.company,
-                    shoe.description
+        shoeContainer.post {
+            shoeContainer.removeAllViews()
+            for (shoe in shoes) {
+                val shoeInfoText =
+                    resources.getString(
+                        R.string.shoe_inventory_item,
+                        shoe.name,
+                        shoe.size.toString(),
+                        shoe.company,
+                        shoe.description
+                    )
+
+                val view = TextView(shoeContainer.context)
+                val margin =
+                    resources.getDimension(R.dimen.shoe_inventory_screen_vertical_margin)
+                        .toInt()
+                val layoutParams =
+                    LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                    ).apply {
+                        setMargins(margin, margin, margin, margin)
+                    }
+                view.setTextSize(
+                    android.util.TypedValue.COMPLEX_UNIT_PX,
+                    resources.getDimension(R.dimen.shoe_inventory_body_text_size)
                 )
+                view.text = shoeInfoText
+                view.layoutParams = layoutParams
 
-            val view = TextView(shoeContainer.context)
-            val margin =
-                resources.getDimension(R.dimen.shoe_inventory_screen_vertical_margin)
-                    .toInt()
-            val layoutParams =
-                LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT).apply {
-                    setMargins(margin, margin, margin, margin)
-                }
-            view.setTextSize(
-                android.util.TypedValue.COMPLEX_UNIT_PX,
-                resources.getDimension(R.dimen.shoe_inventory_body_text_size))
-            view.text = shoeInfoText
-            view.layoutParams = layoutParams
-
-            shoeContainer.addView(view)
+                shoeContainer.addView(view)
+            }
         }
     }
 }
