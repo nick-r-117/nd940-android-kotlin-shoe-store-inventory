@@ -11,9 +11,9 @@ class ShoeInventoryViewModel : ViewModel() {
     val shoeSize = MutableLiveData<String>()
     val shoeDescription = MutableLiveData<String>()
 
-    private val _shouldClearTextInputFields = MutableLiveData<Boolean>()
-    val shouldClearTextInputFields: LiveData<Boolean>
-        get() = _shouldClearTextInputFields
+    private val _onCancelSuccess = MutableLiveData<Boolean>()
+    val onCancelSuccess: LiveData<Boolean>
+        get() = _onCancelSuccess
 
     private val _onSaveSuccess = MutableLiveData<Boolean>()
     val onSaveSuccess: LiveData<Boolean>
@@ -28,14 +28,26 @@ class ShoeInventoryViewModel : ViewModel() {
     }
 
     fun saveShoe() {
-        val shoe = Shoe(
-            shoeName.value.toString(),
-            shoeSize.value.toString().toDouble(),
-            shoeCompany.value.toString(),
-            shoeDescription.value.toString())
+        if (validateInput()) {
+            val shoe = Shoe(
+                shoeName.value.toString(),
+                shoeSize.value.toString().toDouble(),
+                shoeCompany.value.toString(),
+                shoeDescription.value.toString()
+            )
 
-        _shoes.value = _shoes.value?.plus(shoe)
-        _onSaveSuccess.value = true
+            _shoes.value = _shoes.value?.plus(shoe)
+            _onSaveSuccess.value = true
+        } else {
+            // TODO: Handle invalid input i.e. display error message (out of scope of project)
+        }
+    }
+
+    private fun validateInput(): Boolean {
+        return shoeName.value?.isNotEmpty() == true &&
+                shoeCompany.value?.isNotEmpty() == true &&
+                shoeSize.value?.isNotEmpty() == true &&
+                shoeDescription.value?.isNotEmpty() == true
     }
 
     fun cancelShoe() {
@@ -43,11 +55,10 @@ class ShoeInventoryViewModel : ViewModel() {
         shoeCompany.value = ""
         shoeSize.value = ""
         shoeDescription.value = ""
-
-        _shouldClearTextInputFields.value = true
+        _onCancelSuccess.value = true
     }
 
     fun onTextInputFieldsCleared() {
-        _shouldClearTextInputFields.value = false
+        _onCancelSuccess.value = false
     }
 }

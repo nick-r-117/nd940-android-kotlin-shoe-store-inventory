@@ -31,14 +31,14 @@ class ShoeDetailsFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.shoeViewModel = shoeViewModel
 
-        shoeViewModel.shouldClearTextInputFields.observe(this.viewLifecycleOwner, { shouldClear ->
-            Timber.d("shouldClear: $shouldClear")
-            if (shouldClear) {
+        shoeViewModel.onCancelSuccess.observe(this.viewLifecycleOwner, { onCancelSuccess ->
+            if (onCancelSuccess) {
                 binding.shoeNameFieldEditText.text?.clear()
                 binding.shoeCompanyFieldEditText.text?.clear()
                 binding.shoeSizeFieldEditText.text?.clear()
                 binding.shoeDescriptionFieldEditText.text?.clear()
                 shoeViewModel.onTextInputFieldsCleared()
+                findNavController().navigate(ShoeDetailsFragmentDirections.actionShoeDetailsFragmentToShoeInventoryFragment())
             }
         })
 
