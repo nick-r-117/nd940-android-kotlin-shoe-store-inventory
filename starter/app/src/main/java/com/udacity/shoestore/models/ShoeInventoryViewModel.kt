@@ -11,13 +11,9 @@ class ShoeInventoryViewModel : ViewModel() {
     val shoeSize = MutableLiveData<String>()
     val shoeDescription = MutableLiveData<String>()
 
-    private val _onCancelSuccess = MutableLiveData<Boolean>()
-    val onCancelSuccess: LiveData<Boolean>
-        get() = _onCancelSuccess
-
-    private val _onFinished = MutableLiveData<Boolean>()
-    val onFinished: LiveData<Boolean>
-        get() = _onFinished
+    private val _onCloseDetails = MutableLiveData<Boolean>()
+    val onCloseDetails: LiveData<Boolean>
+        get() = _onCloseDetails
 
     private val _shoes = MutableLiveData<List<Shoe>>()
     val shoes: LiveData<List<Shoe>>
@@ -37,7 +33,7 @@ class ShoeInventoryViewModel : ViewModel() {
             )
 
             _shoes.value = _shoes.value?.plus(shoe)
-            _onFinished.value = true
+            _onCloseDetails.value = true
         } else {
             // TODO: Handle invalid input i.e. display error message (out of scope of project)
         }
@@ -55,10 +51,23 @@ class ShoeInventoryViewModel : ViewModel() {
         shoeCompany.value = ""
         shoeSize.value = ""
         shoeDescription.value = ""
-        _onFinished.value = true
+        _onCloseDetails.value = true
     }
 
-    fun onFinished() {
-        _onFinished.value = false
+    fun onCloseDetails() {
+        _onCloseDetails.value = false
+    }
+
+    fun logout() {
+        clearAllData()
+    }
+
+    fun clearAllData() {
+        _shoes.value = mutableListOf()
+        shoeName.value = ""
+        shoeCompany.value = ""
+        shoeSize.value = ""
+        shoeDescription.value = ""
+        _onCloseDetails.value = false
     }
 }

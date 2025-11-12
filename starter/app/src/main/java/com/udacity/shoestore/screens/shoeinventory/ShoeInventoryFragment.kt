@@ -81,6 +81,7 @@ class ShoeInventoryFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.logout_menu_option -> {
+                        shoeViewModel.logout()
                         findNavController().navigate(ShoeInventoryFragmentDirections.actionShoeInventoryFragmentToLoginFragment())
                         true
                     }

@@ -38,14 +38,14 @@ class ShoeDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        shoeViewModel.onFinished.observe(this.viewLifecycleOwner, { onFinished ->
+        shoeViewModel.onCloseDetails.observe(this.viewLifecycleOwner, { onFinished ->
             if (onFinished) {
                 binding.shoeNameFieldEditText.text?.clear()
                 binding.shoeCompanyFieldEditText.text?.clear()
                 binding.shoeSizeFieldEditText.text?.clear()
                 binding.shoeDescriptionFieldEditText.text?.clear()
                 findNavController().popBackStack()
-                shoeViewModel.onFinished()
+                shoeViewModel.onCloseDetails()
             }
         })
     }
