@@ -20,13 +20,17 @@ import timber.log.Timber
 class LoginFragment : Fragment() {
 
     private lateinit var userLoginViewModel: UserLoginViewModel
+    private lateinit var _binding: LoginFragmentBinding
+    private val binding
+        get() = _binding
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<LoginFragmentBinding>(
+        _binding = DataBindingUtil.inflate(
             inflater,
             R.layout.login_fragment,
             container,
@@ -36,6 +40,12 @@ class LoginFragment : Fragment() {
         userLoginViewModel = ViewModelProvider(this).get(UserLoginViewModel::class.java)
         binding.userLoginViewModel = userLoginViewModel
         binding.lifecycleOwner = this.viewLifecycleOwner
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         userLoginViewModel.loginSuccess.observe(this.viewLifecycleOwner, { loginSuccess ->
             if (loginSuccess) {
@@ -49,8 +59,6 @@ class LoginFragment : Fragment() {
                 onLoginSuccess()
             }
         })
-
-        return binding.root
     }
 
     fun onLoginSuccess() {

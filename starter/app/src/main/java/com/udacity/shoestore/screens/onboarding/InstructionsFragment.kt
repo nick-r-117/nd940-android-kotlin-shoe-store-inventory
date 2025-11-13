@@ -14,24 +14,33 @@ import com.udacity.shoestore.models.NuxConstants
 import androidx.core.content.edit
 
 class InstructionsFragment : Fragment() {
+
+    private lateinit var _binding: InstructionsFragmentBinding
+    private val binding
+        get() = _binding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<InstructionsFragmentBinding>(
+        _binding = DataBindingUtil.inflate<InstructionsFragmentBinding>(
             inflater,
             R.layout.instructions_fragment,
             container,
             false
         )
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.nextButton.setOnClickListener { view: View ->
             val prefs = requireActivity().getSharedPreferences(NuxConstants.SHOE_STORE_NUX_PREFS, MODE_PRIVATE)
             prefs.edit { putBoolean(NuxConstants.HAS_USER_ONBOARDED, true) }
             findNavController().navigate(InstructionsFragmentDirections.actionInstructionsFragment3ToShoeInventoryFragment())
         }
-
-        return binding.root
     }
 }

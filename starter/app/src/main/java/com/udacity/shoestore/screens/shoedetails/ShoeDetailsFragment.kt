@@ -15,8 +15,8 @@ import com.udacity.shoestore.models.ShoeInventoryViewModel
 class ShoeDetailsFragment : Fragment() {
 
     private val shoeViewModel: ShoeInventoryViewModel by activityViewModels()
-    private var _binding: ShoeDetailsFragmentBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var _binding: ShoeDetailsFragmentBinding
+    private val binding get() = _binding
 
     override fun onCreateView(
         inflater: LayoutInflater,
